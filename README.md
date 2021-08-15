@@ -3,11 +3,9 @@ Netlify Screenshot
 
 Screenshot webpages to render social media cards on-the-fly using Puppeteer; largely based on [how Pieter generates shareable pictures](https://levels.io/phantomjs-social-media-share-pictures) for [Nomad List](https://nomadlist.com), and how I did them for [Coworkations](https://coworkations.com) with [cardserver](https://github.com/stevelacey/cardserver).
 
-[![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/stevelacey/netlify-screenshot)
-
-| [![Coworkations](https://coworkations.com/cards/coworkations.png)](https://coworkations.com/cards/coworkations.png) [📄 HTML](https://coworkations.com/cards/coworkations) [🖼️ PNG](https://coworkations.com/cards/coworkations.png) | [![Hacker Paradise: Cape Town South Africa](https://coworkations.com/cards/hacker-paradise/cape-town-south-africa.png)](https://coworkations.com/cards/hacker-paradise/cape-town-south-africa.png) [📄 HTML](https://coworkations.com/cards/hacker-paradise/cape-town-south-africa) [🖼️ PNG](https://coworkations.com/cards/hacker-paradise/cape-town-south-africa.png) |
+| [![Gun.io: Hire the best talent in software development](https://gunio.netlify.app/screenshot/home.png)](https://gunio.netlify.app/screenshot/home.png) [📄 HTML](https://gun.io) [🖼 PNG](https://gunio.netlify.app/screenshot/home.png) | [![Gun.io Blog](https://gunio.netlify.app/screenshot/blog.png)](https://gunio.netlify.app/screenshot/blog.png) [📄 HTML](https://gun.io/blog) [🖼 PNG](https://gunio.netlify.app/screenshot/blog.png) |
 | --: | --: |
-| **[![Nomad Cruise VI: Spain To Greece](https://coworkations.com/cards/nomad-cruise/nomad-cruise-vi-spain-to-greece.png)](https://coworkations.com/cards/nomad-cruise/nomad-cruise-vi-spain-to-greece.png) [📄 HTML](https://coworkations.com/cards/nomad-cruise/nomad-cruise-vi-spain-to-greece) [🖼️ PNG](https://coworkations.com/cards/nomad-cruise/nomad-cruise-vi-spain-to-greece.png)** | **[![PACK: Ubud Bali](https://coworkations.com/cards/pack/ubud-bali-2.png)](https://coworkations.com/cards/pack/ubud-bali-2.png) [📄 HTML](https://coworkations.com/cards/pack/ubud-bali-2) [🖼️ PNG](https://coworkations.com/cards/pack/ubud-bali-2.png)** |
+| **[![Steaming MVP: Job Card](https://gunio-guild.netlify.app/screenshot/cards/jobs/c4521383-5dba-4d2b-ad24-816a28c9df32.png)](https://gunio-guild.netlify.app/screenshot/cards/jobs/c4521383-5dba-4d2b-ad24-816a28c9df32.png) [📄 HTML](https://app.gun.io/cards/jobs/c4521383-5dba-4d2b-ad24-816a28c9df32) [🖼 PNG](https://gunio-guild.netlify.app/screenshot/cards/jobs/c4521383-5dba-4d2b-ad24-816a28c9df32.png)** | **[![Steve L: Freelancer Card](https://gunio-guild.netlify.app/screenshot/cards/freelancer/579af90e-d141-41b9-b7a8-2c580b00f044.png)](https://gunio-guild.netlify.app/screenshot/cards/freelancer/579af90e-d141-41b9-b7a8-2c580b00f044.png) [📄 HTML](https://app.gun.io/cards/freelancer/579af90e-d141-41b9-b7a8-2c580b00f044) [🖼 PNG](https://gunio-guild.netlify.app/screenshot/cards/freelancer/579af90e-d141-41b9-b7a8-2c580b00f044.png)** |
 
 
 Setup
@@ -30,11 +28,11 @@ Usage
 Netlify Screenshot performs HTML requests based on PNG requests like so:
 
 | 🖼 PNG (Netlify request) | 📄 HTML (webserver request) |
-| :--------------------------------------------------------------------- | :---------------------------------------------- |
-| https://stevelacey.netlify.app/screenshot/cards/steve.png              | https://steve.ly/cards/steve                    |
-| https://coworkations.netlify.app/screenshot/cards/coworkations.png     | https://coworkations.com/cards/coworkations     |
-| https://coworkations.netlify.app/screenshot/cards/hacker-paradise.png  | https://coworkations.com/cards/hacker-paradise  |
-| https://coworkations.netlify.app/screenshot/cards/pack/ubud-bali-2.png | https://coworkations.com/cards/pack/ubud-bali-2 |
+| :--------------------------------------------------------------------------------------------------- | :----------------------------------------------------------------------- |
+| https://gunio.netlify.app/screenshot/home.png                                                        | https://gun.io/home                                                      |
+| https://gunio.netlify.app/screenshot/blog.png                                                        | https://gun.io/blog                                                      |
+| https://gunio-guild.netlify.app/screenshot/cards/freelancer/579af90e-d141-41b9-b7a8-2c580b00f044.png | https://app.gun.io/cards/freelancer/579af90e-d141-41b9-b7a8-2c580b00f044 |
+| https://gunio-guild.netlify.app/screenshot/cards/jobs/c4521383-5dba-4d2b-ad24-816a28c9df32.png       | https://app.gun.io/cards/jobs/c4521383-5dba-4d2b-ad24-816a28c9df32       |
 
 If you want to serve your cards on the same domain as your app, you can route PNG traffic to Netlify via NGINX:
 
@@ -47,11 +45,11 @@ location ~ ^/(cards/.*\.png)$ {
 Then your URLs can look something like this:
 
 | 🖼 PNG (Netlify request) | 📄 HTML (webserver request) |
-| :-------------------------------------------------- | :---------------------------------------------- |
-| https://steve.ly/cards/steve.png                    | https://steve.ly/cards/steve                    |
-| https://coworkations.com/cards/coworkations.png     | https://coworkations.com/cards/coworkations     |
-| https://coworkations.com/cards/hacker-paradise.png  | https://coworkations.com/cards/hacker-paradise  |
-| https://coworkations.com/cards/pack/ubud-bali-2.png | https://coworkations.com/cards/pack/ubud-bali-2 |
+| :--------------------------------------------------------------------------- | :----------------------------------------------------------------------- |
+| https://gun.io/home.png                                                      | https://gun.io/home                                                      |
+| https://gun.io/blog.png                                                      | https://gun.io/blog                                                      |
+| https://app.gun.io/cards/freelancer/579af90e-d141-41b9-b7a8-2c580b00f044.png | https://app.gun.io/cards/freelancer/579af90e-d141-41b9-b7a8-2c580b00f044 |
+| https://app.gun.io/cards/jobs/c4521383-5dba-4d2b-ad24-816a28c9df32.png       | https://app.gun.io/cards/jobs/c4521383-5dba-4d2b-ad24-816a28c9df32       |
 
 Alternatively, you can route all `/screenshots/` traffic to Netlify, then prefix any path on your site with `/screenshots/` to capture a screenshot.
 
@@ -94,9 +92,9 @@ Markup
 You’ll want meta tags something like these:
 
 ```html
-<meta itemprop="image" content="https://coworkations.com/cards/coworkations.png">
-<meta property="og:image" content="https://coworkations.com/cards/coworkations.png">
-<meta name="twitter:image" content="https://coworkations.com/cards/coworkations.png">
+<meta itemprop="image" content="https://gunio.netlify.app/screenshot/blog.png">
+<meta property="og:image" content="https://gunio.netlify.app/screenshot/blog.png">
+<meta name="twitter:image" content="https://gunio.netlify.app/screenshot/blog.png">
 ```
 
 
